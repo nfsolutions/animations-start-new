@@ -8,11 +8,11 @@ import {state, trigger, style} from '@angular/animations';
     trigger('divState', [
       state('normal', style({
         'background-color' : 'red',
-        'translate': 'translateX(0)'
+        transform: 'translateX(0)'
       })),
       state('highlighted', style({
         backgroundColor: 'blue',
-        'translate': 'translateX(100px)'
+        transform: 'translateX(100px)'
       }))
     ])
 
