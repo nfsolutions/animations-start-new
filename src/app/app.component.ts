@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {state, trigger, style} from '@angular/animations';
 
 @Component({
@@ -7,7 +7,7 @@ import {state, trigger, style} from '@angular/animations';
   animations: [
     trigger('divState', [
       state('normal', style({
-        'background-color' : 'red',
+        'background-color': 'red',
         transform: 'translateX(0)'
       })),
       state('highlighted', style({
@@ -22,7 +22,15 @@ export class AppComponent {
   state = 'normal';
   list = ['Milk', 'Sugar', 'Bread'];
 
-    onAdd(item) {
-      this.list.push(item);
-    }
+  onAdd(item) {
+    this.list.push(item);
+  }
+
+  onAnimate() {
+    this.state === 'normal' ? this.state = 'highlighted' : this.state = 'normal';
+  }
+
+  onShrink() {
+
+  }
 }
