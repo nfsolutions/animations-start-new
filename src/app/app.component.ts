@@ -15,7 +15,6 @@ import {state, trigger, style} from '@angular/animations';
         transform: 'translateX(100px)'
       }))
     ])
-
   ]
 })
 export class AppComponent {
