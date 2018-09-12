@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {state, trigger, style, transition, animate, keyframes} from '@angular/animations';
+import {state, trigger, style, transition, animate, keyframes, group} from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -90,29 +90,42 @@ import {state, trigger, style, transition, animate, keyframes} from '@angular/an
           })
         ]))
       ]),
-    ]),
-  ]
-})
-export class AppComponent {
-  state = 'normal';
-  wildState = 'normal';
-  list = ['Milk', 'Sugar', 'Bread'];
+      transition('* => void', [
+        group([
+          animate(300, style({
+            color: 'red'
+          })),
+          animate(800, style({
+            transform: 'translateX(100px)',
+            opacity: 0
+          }))
+        ])
+      ]),
+    ])
+  ]})
 
-  onAdd(item) {
-    this.list.push(item);
-  }
 
-  onAnimate() {
-    this.state === 'normal' ? this.state = 'highlighted' : this.state = 'normal';
-    this.wildState === 'normal' ? this.wildState = 'highlighted' : this.wildState = 'normal';
-  }
 
-  onShrink() {
-    this.wildState = 'shrunken';
-  }
+  export class AppComponent {
+    state = 'normal';
+    wildState = 'normal';
+    list = ['Milk', 'Sugar', 'Bread'];
 
-  onDelete(item: string) {
-    const index = this.list.indexOf(item);
-    this.list.splice(index, 1);
+    onAdd(item) {
+      this.list.push(item);
+    }
+
+    onAnimate() {
+      this.state === 'normal' ? this.state = 'highlighted' : this.state = 'normal';
+      this.wildState === 'normal' ? this.wildState = 'highlighted' : this.wildState = 'normal';
+    }
+
+    onShrink() {
+      this.wildState = 'shrunken';
+    }
+
+    onDelete(item: string) {
+      const index = this.list.indexOf(item);
+      this.list.splice(index, 1);
+    }
   }
-}
